@@ -1,5 +1,7 @@
 # Neovim configuration
 
+![image](https://github.com/Anifyuli/nvim/assets/73734843/46de2480-5679-49bb-b842-a3174be5cc46)
+
 ## Descriptions
 
 This general Neovim configuration. Some piece of this configs pure adapted from [kickstart-modular](https://github.com/dam9000/kickstart-modular.nvim) for make it run flawlessly
