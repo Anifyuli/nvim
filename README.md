@@ -31,3 +31,5 @@ Plugins list
 3. telescope
 4. treesitter
 5. etc
+
+__NOTE__ : Don't forget to remove `.git` directory before push to your own Git repo
