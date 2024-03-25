@@ -16,6 +16,7 @@ return {
       -- make sure mason installs the server
       servers = {
         tsserver = {
+          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'html' },
           ---@diagnostic disable-next-line: missing-fields
           settings = {
             completions = {

@@ -227,18 +227,28 @@ return {
               luasnip.jump(-1)
             end
           end, { 'i', 's' }),
+          -- Autopairs mapping
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
         },
         sources = {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'buffer' }
         },
       }
     end,
   },
   {
-    -- Autopair
-    'echasnovski/mini.pairs',
-    version = '*'
-  },
+    -- Autopairs
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = function(_, opts)
+      require("nvim-autopairs").setup(opts)
+
+      -- setup cmp for autopairs
+      local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+      require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end,
+  }
 }

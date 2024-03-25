@@ -23,7 +23,7 @@ return {
       dev_log = {
         enabled = true,
         notify_errors = false,
-        open_cmd = 'tabedit',
+        open_cmd = 'botright 40vnew',
       },
       dev_tools = {
         autostart = false,

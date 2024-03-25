@@ -37,7 +37,7 @@ return {
     dependencies = {
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
     },
-    opts = function(_, opts)
+    opts = function()
       require("cmp").config.formatting = {
         format = require("tailwindcss-colorizer-cmp").formatter
       }

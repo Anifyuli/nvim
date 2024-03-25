@@ -133,9 +133,6 @@ return {
         html = {
           filetypes = { 'html', 'twig', 'hbs', 'php' }
         },
-        tsserver = {
-          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'html' }
-        },
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },

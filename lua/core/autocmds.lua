@@ -3,8 +3,10 @@ local function augroup(name)
   return vim.api.nvim_create_augroup('neovim_' .. name, { clear = true })
 end
 
+local autocmd = vim.api.nvim_create_autocmd
+
 -- Close some filetypes with <q>
-vim.api.nvim_create_autocmd('FileType', {
+autocmd('FileType', {
   group = augroup('close_with_q'),
   pattern = {
     'PlenaryTestPopup',
@@ -29,7 +31,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd('FileType', {
+autocmd('FileType', {
   group = augroup('wrap_spell'),
   pattern = { 'gitcommit', 'markdown' },
   callback = function()
@@ -39,7 +41,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Fix conceallevel for json files
-vim.api.nvim_create_autocmd({ 'FileType' }, {
+autocmd({ 'FileType' }, {
   group = augroup('json_conceal'),
   pattern = { 'json', 'jsonc', 'json5' },
   callback = function()
@@ -48,7 +50,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+autocmd({ 'BufWritePre' }, {
   group = augroup('auto_create_dir'),
   callback = function(event)
     if event.match:match('^%w%w+://') then
@@ -60,7 +62,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 })
 
 -- Changing components color using highlight
-vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+autocmd({ "ColorScheme", "VimEnter" }, {
   group = vim.api.nvim_create_augroup('Color', {}),
   pattern = "*",
   callback = function()
@@ -70,9 +72,19 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
   end
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+-- Format on save
+autocmd("BufWritePre", {
   callback = function()
     vim.lsp.buf.format { async = false }
+  end
+})
+
+-- Set winfixwith on __FLUTTER_DEV_LOG__ window
+autocmd("BufWinEnter", {
+  pattern = "__FLUTTER_DEV_LOG__",
+  callback = function()
+    vim.wo.winfixwidth = true
+    vim.wo.wbr = "%f"
   end
 })
 
