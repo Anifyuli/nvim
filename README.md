@@ -1,3 +1,7 @@
+# Announcement
+
+This repo archived cause no longer maintained due to inactivity. I use Neovim again, but more controlled via Chezmoi in [here](https://github.com/Anifyuli/dotfiles) if you need up-to-date configs.
+
 # Neovim configuration
 
 ![image](https://github.com/Anifyuli/nvim/assets/73734843/46de2480-5679-49bb-b842-a3174be5cc46)
